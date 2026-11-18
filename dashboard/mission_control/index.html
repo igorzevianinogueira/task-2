@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="command-deck">
+<head>
+  <script>
+    (function () {
+      var t = new URLSearchParams(location.search).get("theme");
+      if (t) document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TerraOps Fusion — Mission Control</title>
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-brand">
+      <h1>TerraOps Fusion</h1>
+      <p class="tagline">Satélite + solo → decisão no tempo certo</p>
+    </div>
+    <span class="meta">Sentinel: <span id="sentinel-src">—</span><br /><span id="gen-time">—</span></span>
+  </header>
+  <div id="app-root">
+    <div class="grid">
+      <section class="zone" id="zone-dec">
+        <h2>Decisão</h2>
+        <p class="zone-subtitle">Posso agir no campo agora?</p>
+        <p class="persona">Carlos <span>· operador</span></p>
+        <p class="score-label">Índice de stress fundido</p>
+        <div class="score-value" id="sf-score">—</div>
+        <div class="score-bar"><div class="score-bar-fill" id="sf-bar"></div></div>
+        <p class="rec-text" id="sf-rec">—</p>
+        <div class="alert-card" id="sf-alert" hidden>—</div>
+      </section>
+      <section class="zone" id="zone-orb">
+        <h2>Orbital</h2>
+        <p class="zone-subtitle">Qual talhão priorizo?</p>
+        <p class="persona">Renata <span>· gestora</span></p>
+        <p class="zone-subtitle" style="font-style: normal; margin-top: -4px">Ranking por stress fundido</p>
+        <div id="rank-list"></div>
+      </section>
+      <section class="zone" id="zone-cal">
+        <h2>Calibração</h2>
+        <p class="zone-subtitle">Por que as fontes discordam?</p>
+        <p class="persona">Helena <span>· agrônoma</span></p>
+        <div class="bar-row">
+          <div class="bar-label"><span>Orbital (NDVI)</span><span id="orb-val">—</span></div>
+          <div class="bar-track"><div class="bar-fill orbital" id="orb-bar" style="width:0%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Solo (umidade)</span><span id="soil-val">—</span></div>
+          <div class="bar-track"><div class="bar-fill ground" id="soil-bar" style="width:0%"></div></div>
+        </div>
+        <p style="margin-top:12px">Δ divergência: <strong id="div-delta">—</strong></p>
+        <div class="div-explain" id="div-explain" hidden>
+          <p class="div-resumo" id="div-resumo">—</p>
+          <p class="div-chain" id="div-chain">—</p>
+          <ul class="div-hipoteses" id="div-hipoteses"></ul>
+          <p class="div-acao" id="div-acao">—</p>
+        </div>
+        <div id="imp-list" style="margin-top:12px"></div>
+      </section>
+    </div>
+    <footer class="timeline" id="timeline">Aguardando snapshot…</footer>
+  </div>
+  <script type="module">
+    import { loadSnapshot } from "./scripts/app.js";
+    fetch("../../data/snapshot.json")
+      .then((r) => (r.ok ? r.text() : Promise.reject()))
+      .then((t) => loadSnapshot(t))
+      .catch(() => {
+        document.getElementById("timeline").textContent =
+          "Nenhuma leitura orbital. Execute a fusão para carregar talhões.";
+      });
+  </script>
+</body>
+</html>

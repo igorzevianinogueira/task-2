@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="command-deck">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TerraOps Fusion — Home</title>
+  <link rel="stylesheet" href="nav.css" />
+</head>
+<body>
+  <header class="shell-header">
+    <div>
+      <p class="eyebrow">Plataforma de observação da Terra</p>
+      <h1>TerraOps Fusion</h1>
+      <p class="tagline">Satélite + solo → decisão no tempo certo</p>
+    </div>
+    <div class="mission-meta" aria-label="Contexto da demonstração">
+      <span>Grupo 49</span>
+      <span>GS 2026.1</span>
+      <span>Agro primeiro</span>
+    </div>
+  </header>
+
+  <main class="shell-main">
+    <section class="domain-strip" aria-label="Domínios da plataforma">
+      <button class="domain-pill active" type="button" aria-pressed="true">
+        Agronegócio <span aria-hidden="true">●</span>
+      </button>
+      <button class="domain-pill" type="button" disabled>
+        Geoambiental <span>em breve</span>
+      </button>
+    </section>
+
+    <section class="command-brief" aria-label="Resumo operacional">
+      <div class="signal-panel">
+        <span class="signal-dot orbital"></span>
+        <span class="signal-line"></span>
+        <span class="signal-dot ground"></span>
+        <span class="signal-line fusion"></span>
+        <span class="signal-dot alert"></span>
+      </div>
+      <div>
+        <h2>Sala de comando agro</h2>
+        <p>Escolha o módulo da demonstração e navegue pela fatia vertical do TerraOps Fusion.</p>
+      </div>
+    </section>
+
+    <section class="module-grid" aria-label="Módulos principais">
+      <a class="module-card accent-alert primary" href="../mission_control/index.html">
+        <span class="card-kicker">Operações</span>
+        <strong>Mission Control</strong>
+        <span class="card-copy">Hub 3 zonas para decisão, orbital e calibração.</span>
+        <span class="card-status live">live</span>
+      </a>
+
+      <a class="module-card accent-fusion" href="../app.py">
+        <span class="card-kicker">Fusion Engine</span>
+        <strong>Console Fusão</strong>
+        <span class="card-copy">Entrada Streamlit para executar o pipeline existente.</span>
+        <span class="card-status streamlit">streamlit</span>
+      </a>
+
+      <a class="module-card accent-fusion" href="../screens/ml_lab.html">
+        <span class="card-kicker">Ciência</span>
+        <strong>ML Lab</strong>
+        <span class="card-copy">Métricas do modelo e importância das features.</span>
+        <span class="card-status soon">em implantação</span>
+      </a>
+
+      <a class="module-card accent-orbital" href="../screens/orbital_map.html">
+        <span class="card-kicker">Orbital</span>
+        <strong>Mapa Orbital</strong>
+        <span class="card-copy">Tiles por NDVI para leitura macro dos talhões.</span>
+        <span class="card-status soon">em implantação</span>
+      </a>
+
+      <a class="module-card accent-ground" href="../screens/talhao.html">
+        <span class="card-kicker">Operações</span>
+        <strong>Talhões</strong>
+        <span class="card-copy">Drill-down do talhão selecionado pelo ranking.</span>
+        <span class="card-status soon">em implantação</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="shell-footer">
+    Integrantes Grupo 49 · GS 2026.1
+  </footer>
+</body>
+</html>

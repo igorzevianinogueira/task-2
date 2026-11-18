@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>TerraOps — Laboratório de paletas</title>
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <style>
+    .lab-toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .lab-toolbar button {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .lab-toolbar button.active {
+      border-color: var(--fusion);
+      box-shadow: 0 0 12px var(--glow-fusion);
+    }
+    .lab-note {
+      padding: 12px 20px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .swatches {
+      display: flex;
+      gap: 8px;
+      padding: 16px 20px;
+      flex-wrap: wrap;
+    }
+    .swatch {
+      width: 72px;
+      text-align: center;
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+    .swatch div {
+      height: 36px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      border: 1px solid var(--border);
+    }
+    .preview-wrap {
+      padding: 0 16px 24px;
+    }
+  </style>
+</head>
+<body data-theme="command-deck">
+  <div class="lab-toolbar">
+    <strong style="margin-right:8px;align-self:center">Paleta:</strong>
+    <button type="button" data-theme-btn="command-deck" class="active">A · Command Deck</button>
+    <button type="button" data-theme-btn="orbital-dusk">B · Orbital Dusk</button>
+    <button type="button" data-theme-btn="terra-signal">C · Terra Signal</button>
+  </div>
+  <p class="lab-note">
+    PO: escolha A, B ou C e avise no grupo. Padrão até decisão: <strong>command-deck</strong>.
+    Referência: <code>docs/visual_identity.md</code>
+  </p>
+  <div class="swatches" id="swatches"></div>
+  <div class="preview-wrap">
+    <iframe id="preview" title="Mission Control preview" style="width:100%;height:640px;border:1px solid var(--border);border-radius:8px;background:var(--bg)"></iframe>
+  </div>
+  <script>
+    const tokens = ["bg", "surface", "orbital", "ground", "fusion", "alert", "danger"];
+    const sw = document.getElementById("swatches");
+    tokens.forEach((t) => {
+      const el = document.createElement("div");
+      el.className = "swatch";
+      el.innerHTML = `<div style="background:var(--${t})"></div>${t}`;
+      sw.appendChild(el);
+    });
+
+    function setTheme(name) {
+      document.body.dataset.theme = name;
+      document.documentElement.dataset.theme = name;
+      document.querySelectorAll("[data-theme-btn]").forEach((b) => {
+        b.classList.toggle("active", b.dataset.themeBtn === name);
+      });
+      const iframe = document.getElementById("preview");
+      iframe.src = `index.html?theme=${name}&t=${Date.now()}`;
+    }
+
+    document.querySelectorAll("[data-theme-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => setTheme(btn.dataset.themeBtn));
+    });
+
+    const params = new URLSearchParams(location.search);
+    setTheme(params.get("theme") || "command-deck");
+  </script>
+</body>
+</html>

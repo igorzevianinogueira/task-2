@@ -1,0 +1,230 @@
+{
+  "generated_at": "2026-06-08T03:30:51.450399+00:00",
+  "talhoes": [
+    {
+      "id": "T-01",
+      "cultura": "cafe",
+      "stress_fusion": 32,
+      "categoria": "baixo",
+      "orbital": {
+        "ndvi": 0.634,
+        "ndwi": 0.113,
+        "precip_mm": 12.4,
+        "tile_url": ""
+      },
+      "terrestre": {
+        "umidade_solo": 31.7,
+        "ph": 6.8,
+        "fonte": "wokwi"
+      },
+      "divergencia": {
+        "ativa": true,
+        "delta_ndvi_umidade": 0.317,
+        "limiar": 0.15,
+        "tipo": "orbital_otimista",
+        "orbital_interp": "vegetação vigorosa",
+        "solo_interp": "solo seco",
+        "resumo": "Satélite indica vegetação vigorosa (NDVI 0.63), mas solo mede 31.7% — solo seco.",
+        "explicacao": "Δ = |0.634 − 0.317| = 0.317 > limiar 0.15. A camada orbital superestima vigor em relação ao ground-truth local.",
+        "hipoteses": [
+          "Atraso na resposta do NDVI após evento hídrico local",
+          "Sensor de umidade descalibrado ou mal posicionado no talhão",
+          "Variação intra-talhão não capturada pelo pixel Sentinel"
+        ],
+        "penalidade": 20,
+        "acao_sugerida": "Validar leitura Wokwi e comparar com amostra de solo no ponto crítico."
+      },
+      "recomendacao": "Condições favoráveis para operação no talhão (cafe)"
+    },
+    {
+      "id": "T-04",
+      "cultura": "cafe",
+      "stress_fusion": 31,
+      "categoria": "baixo",
+      "orbital": {
+        "ndvi": 0.453,
+        "ndwi": 0.446,
+        "precip_mm": 29.2,
+        "tile_url": ""
+      },
+      "terrestre": {
+        "umidade_solo": 78.9,
+        "ph": 7.1,
+        "fonte": "wokwi"
+      },
+      "divergencia": {
+        "ativa": true,
+        "delta_ndvi_umidade": 0.336,
+        "limiar": 0.15,
+        "tipo": "orbital_pessimista",
+        "orbital_interp": "cobertura moderada",
+        "solo_interp": "solo encharcado",
+        "resumo": "Satélite indica cobertura moderada (NDVI 0.45), mas solo mede 78.9% — solo encharcado.",
+        "explicacao": "Δ = |0.453 − 0.789| = 0.336 > limiar 0.15. A camada orbital subestima a condição hídrica medida no campo.",
+        "hipoteses": [
+          "Irrigação recente ainda não refletida no NDVI orbital",
+          "Sombra ou nuvem residual na passagem Sentinel",
+          "Umidade em subsuperfície não visível ao sensor orbital"
+        ],
+        "penalidade": 20,
+        "acao_sugerida": "Aguardar próxima passagem orbital ou cruzar com NDWI antes de decisão de campo."
+      },
+      "recomendacao": "Condições favoráveis para operação no talhão (cafe)"
+    },
+    {
+      "id": "T-02",
+      "cultura": "soja",
+      "stress_fusion": 28,
+      "categoria": "baixo",
+      "orbital": {
+        "ndvi": 0.681,
+        "ndwi": 0.202,
+        "precip_mm": 28.5,
+        "tile_url": ""
+      },
+      "terrestre": {
+        "umidade_solo": 34.8,
+        "ph": 6.2,
+        "fonte": "wokwi"
+      },
+      "divergencia": {
+        "ativa": true,
+        "delta_ndvi_umidade": 0.333,
+        "limiar": 0.15,
+        "tipo": "orbital_otimista",
+        "orbital_interp": "vegetação vigorosa",
+        "solo_interp": "solo seco",
+        "resumo": "Satélite indica vegetação vigorosa (NDVI 0.68), mas solo mede 34.8% — solo seco.",
+        "explicacao": "Δ = |0.681 − 0.348| = 0.333 > limiar 0.15. A camada orbital superestima vigor em relação ao ground-truth local.",
+        "hipoteses": [
+          "Atraso na resposta do NDVI após evento hídrico local",
+          "Sensor de umidade descalibrado ou mal posicionado no talhão",
+          "Variação intra-talhão não capturada pelo pixel Sentinel"
+        ],
+        "penalidade": 20,
+        "acao_sugerida": "Validar leitura Wokwi e comparar com amostra de solo no ponto crítico."
+      },
+      "recomendacao": "Condições favoráveis para operação no talhão (soja)"
+    },
+    {
+      "id": "T-03",
+      "cultura": "milho",
+      "stress_fusion": 11,
+      "categoria": "baixo",
+      "orbital": {
+        "ndvi": 0.507,
+        "ndwi": 0.285,
+        "precip_mm": 22.8,
+        "tile_url": ""
+      },
+      "terrestre": {
+        "umidade_solo": 40.6,
+        "ph": 7.1,
+        "fonte": "wokwi"
+      },
+      "divergencia": {
+        "ativa": false,
+        "delta_ndvi_umidade": 0.101,
+        "limiar": 0.15,
+        "tipo": "coerente",
+        "orbital_interp": "cobertura moderada",
+        "solo_interp": "solo em atenção",
+        "resumo": "Fontes alinhadas: orbital (cobertura moderada) e solo (solo em atenção) concordam dentro do limiar.",
+        "explicacao": "Δ = |NDVI − umidade/100| = |0.507 − 0.406| = 0.101 ≤ 0.15. NDVI 0.51 e umidade 40.6% sustentam fusão coerente.",
+        "hipoteses": [],
+        "penalidade": 0,
+        "acao_sugerida": "Manter monitoramento de rotina; sem calibração urgente."
+      },
+      "recomendacao": "Condições favoráveis para operação no talhão (milho)"
+    },
+    {
+      "id": "T-05",
+      "cultura": "soja",
+      "stress_fusion": 6,
+      "categoria": "baixo",
+      "orbital": {
+        "ndvi": 0.757,
+        "ndwi": 0.587,
+        "precip_mm": 36.8,
+        "tile_url": ""
+      },
+      "terrestre": {
+        "umidade_solo": 61.0,
+        "ph": 6.6,
+        "fonte": "wokwi"
+      },
+      "divergencia": {
+        "ativa": false,
+        "delta_ndvi_umidade": 0.147,
+        "limiar": 0.15,
+        "tipo": "coerente",
+        "orbital_interp": "vegetação vigorosa",
+        "solo_interp": "umidade adequada",
+        "resumo": "Fontes alinhadas: orbital (vegetação vigorosa) e solo (umidade adequada) concordam dentro do limiar.",
+        "explicacao": "Δ = |NDVI − umidade/100| = |0.757 − 0.610| = 0.147 ≤ 0.15. NDVI 0.76 e umidade 61.0% sustentam fusão coerente.",
+        "hipoteses": [],
+        "penalidade": 0,
+        "acao_sugerida": "Manter monitoramento de rotina; sem calibração urgente."
+      },
+      "recomendacao": "Condições favoráveis para operação no talhão (soja)"
+    }
+  ],
+  "alertas": [
+    {
+      "tipo": "divergencia",
+      "talhao_id": "T-01",
+      "severidade": "medio",
+      "mensagem": "Satélite indica vegetação vigorosa (NDVI 0.63), mas solo mede 31.7% — solo seco."
+    },
+    {
+      "tipo": "divergencia",
+      "talhao_id": "T-02",
+      "severidade": "medio",
+      "mensagem": "Satélite indica vegetação vigorosa (NDVI 0.68), mas solo mede 34.8% — solo seco."
+    },
+    {
+      "tipo": "divergencia",
+      "talhao_id": "T-04",
+      "severidade": "medio",
+      "mensagem": "Satélite indica cobertura moderada (NDVI 0.45), mas solo mede 78.9% — solo encharcado."
+    }
+  ],
+  "meta": {
+    "sentinel_source": "cache",
+    "wokwi_url": "https://wokwi.com/projects/esp32-terraops-fusion"
+  },
+  "feature_importance": [
+    {
+      "feature": "num__ndvi",
+      "importance": 0.6092126842959216
+    },
+    {
+      "feature": "num__umidade_solo",
+      "importance": 0.0979031035062961
+    },
+    {
+      "feature": "num__ndwi",
+      "importance": 0.0738769592741789
+    },
+    {
+      "feature": "num__declividade",
+      "importance": 0.0612796867773811
+    },
+    {
+      "feature": "num__temperatura",
+      "importance": 0.0560861200941756
+    },
+    {
+      "feature": "num__precip_mm",
+      "importance": 0.049738108297507
+    },
+    {
+      "feature": "num__ph",
+      "importance": 0.0375191887332444
+    },
+    {
+      "feature": "cat__cultura_milho",
+      "importance": 0.0061354568068761
+    }
+  ]
+}
